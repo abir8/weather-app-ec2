@@ -17,8 +17,16 @@ def index():
                 current = data['current_condition'][0]
                 weather = {
                     "city": city.title(),
-                    "temperature": current["temp_C"],
-                    "description": current["weatherDesc"][0]["value"]
+                    "temp": data["current_condition"][0]["temp_C"],
+                    "feels_like": data["current_condition"][0]["FeelsLikeC"],
+                    "description": data["current_condition"][0]["weatherDesc"][0]["value"],
+                    "humidity": data["current_condition"][0]["humidity"],
+                    "wind_speed": data["current_condition"][0]["windspeedKmph"],
+                    "icon": data["current_condition"][0]["weatherIconUrl"][0]["value"],
+                    "pressure": data["current_condition"][0].get("pressure", "N/A"),
+                    "visibility": data["current_condition"][0].get("visibility", "N/A"),
+                    "uv_index": data["weather"][0].get("uvIndex", "N/A"),
+                    "cloudcover": data["current_condition"][0].get("cloudcover", "N/A"),
                 }
             else:
                 error = "City not found."
